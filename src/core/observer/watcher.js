@@ -24,6 +24,12 @@ let uid = 0
  * and fires callback when the expression value changes.
  * This is used for both the $watch() api and directives.
  */
+/**
+ * Watcher 执行的顺序是按 id 从小到大排序执行
+ * 计算属性的 Watcher id 为 1 先执行
+ * 侦听器 Watcher id 为 2 
+ * 渲染 Watcher id 为 3 最后执行
+ */
 export default class Watcher {
   vm: Component;
   expression: string;
@@ -91,6 +97,9 @@ export default class Watcher {
         )
       }
     }
+    // 如果是计算属性，lazy为true
+    // 延迟触发传入的方法（侦听器传入的是用户的回调，渲染Watcher传入的是upadateCompoent）
+    // 计算属性触发回调的时机是模板渲染完成后，所以这里要延迟执行
     this.value = this.lazy
       ? undefined
       : this.get()

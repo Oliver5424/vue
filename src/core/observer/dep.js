@@ -12,6 +12,9 @@ let uid = 0
  */
 export default class Dep {
   static target: ?Watcher;
+  // id: 0  $attr
+  // id: 1  $listener
+  // id: 2  data
   id: number;
   subs: Array<Watcher>;
 

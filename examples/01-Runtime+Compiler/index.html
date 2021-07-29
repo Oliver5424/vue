@@ -8,12 +8,14 @@
 </head>
 <body>
     <div id="app">
-        <!-- Hello World -->
-        <!-- <h1>{{msg}}</h1> -->
         {{msg}}
         {{msg}}
-
-        {{count}}
+        {{flag}}
+        {{status}}
+        {{obj.title}}
+        {{obj.name}}
+        {{obj.age}}
+        {{arr}}
     </div>
 
     <script src="../../dist/vue.js"></script>
@@ -21,8 +23,15 @@
         const vm = new Vue({
             el: '#app',
             data: {
-                msg: 'Hello Vue',
-                count: 100
+                msg: 'hello',
+                flag: '1',
+                status: true,
+                obj: {
+                    title: '你好',
+                    name: '伟伟',
+                    age: 18
+                },
+                arr: [1, 2, 3]
             }
         })
     </script>
